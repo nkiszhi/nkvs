@@ -6,8 +6,9 @@ do
 	echo $url
 	echo "$0 $COUNTER: Downloading $url"
 	name=`printf "%010d" $COUNTER`
-	curl $url -s -k $url -o DATA/$name.torrent
+	#curl $url -s -k $url -o DATA/$name.torrent
 	#curl $url -s -k $url -o DATA/$COUNTER.torrent
+	curl -O $url
 	let COUNTER=COUNTER+1
 	#sleep 1
 done

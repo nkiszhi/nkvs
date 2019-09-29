@@ -2,6 +2,8 @@
 torrent.list
 rss_feed.xml
 config
+VirusShare_00*
+*.zip.torrent*
 
 # Prerequisites
 *.d

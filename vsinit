@@ -33,7 +33,7 @@ echo "$0 | username"
 echo "$0 | password"
 
 echo "$0 | cp -r ~/.config/transmission-daemon config/transmission-daemon"
-cp -r /home/zautomata/.config/transmission-daemon/ config/transmission-daemon
+cp -r ~/.config/transmission-daemon/ config/transmission-daemon
 sed -i 's/"script-torrent-done-enabled": false/"script-torrent-done-enabled": true/g' config/transmission-daemon/settings.json
 sed -i 's/"script-torrent-done-filename": ""/"script-torrent-done-filename": ".\/vsextract"/g' config/transmission-daemon/settings.json
 

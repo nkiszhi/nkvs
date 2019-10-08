@@ -4,6 +4,10 @@ rss_feed.xml
 config
 VirusShare_00*
 *.zip.torrent*
+*.swp
+DATA
+logs
+snapshots
 
 # Prerequisites
 *.d

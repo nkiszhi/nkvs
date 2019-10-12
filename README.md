@@ -49,22 +49,13 @@ For a daily update crontab(1) maybe used i.e. `crontab -e` and adding `0 0 * * *
 |-- vscleanup (desc)
 |-- vsdownload (desc)
 |-- vssnap (desc)
+|-- vsdw.py (desc)
+|-- vsinit.py (init data folder based on hex number)
+|-- vsuz.py (unzip virusshare samples)
 `-- vstorrentfiles (desc)
 ```
-# Installation
-Create a sperate user account for the script to run
-It is adivsed to run the virusshare on its own account.
-
-give permission 0755 (or rwxr-xr-x) for the script 
 
 ## Dependencies
+
 `sudo apt-get install transmission-cli transmission-daemon`
 
-# Configuration
-TODO
-
-# Logging
-TODO
-
-# Further Information
-TODO

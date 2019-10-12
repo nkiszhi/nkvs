@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 
 import shutil
-import os
 
 FILE_TORRENTS = "./DATA/torrent.list"
 DIR_DATA = "./DATA/"

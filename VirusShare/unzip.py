@@ -1,6 +1,7 @@
 #encoding:utf-8
 import os
 import zipfile
+
 def unzip_file(zip_dir,data_dir,password):
 	if(data_dir):
 		if not os.path.exists(data_dir):
@@ -22,6 +23,7 @@ def unzip_file(zip_dir,data_dir,password):
 	else:
 		exit("[!]no '%s'"% data_dir)
 	return os.path.abspath(data_dir)
+
 if __name__ == '__main__':
 	root = unzip_file('./zip','./data','infected')
 	print(11111)

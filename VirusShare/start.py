@@ -1,5 +1,6 @@
 #encoding:utf-8
 import os
+import time
 
 from unzip import unzip_file
 
@@ -19,6 +20,8 @@ read_config(CONFIG_FILE)
 print(555555555)
 print(config) 
 
+second = 30*60
+print(second)
 html = get_html() 
 new_content,appeared_content = get_url_list(html,config.URL_DIR)
 
@@ -27,6 +30,10 @@ torrent_paths = get_torrent_list(content,config.TORRENT_DIR)
 
 zip_dir = get_file_list(torrent_paths,config.ZIP_DIR)
 print(zip_dir)
-data_dir = unzip_file(zip_dir,config.DATA_DIR,config.PWD)
+
+while True:
+	data_dir = unzip_file(zip_dir,config.DATA_DIR,config.PWD)
+	time.sleep(second)
 
 print("virusshare is in %s"%data_dir)
+

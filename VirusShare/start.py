@@ -4,10 +4,11 @@ import time
 
 from unzip import unzip_file
 
-from load_file import get_file_list
+from load_zip import get_zip_list
 
-from load_torrent import select
 from load_torrent import get_torrent_list
+
+from update import judge_update
 
 from load_url import get_html
 from load_url import get_url_list
@@ -22,18 +23,21 @@ print(config)
 
 second = 30*60
 print(second)
-html = get_html() 
-new_content,appeared_content = get_url_list(html,config.URL_DIR)
-
-content = select(new_content,appeared_content)
+#get html
+html = get_html(config.V_USERNAME,config.V_PASSWORD) 
+#judge whether to update
+content,url_path = judge_update(html,config.URL_DIR)
+#get url
+content = get_url_list(content,url_path)
+#get .torrent file
 torrent_paths = get_torrent_list(content,config.TORRENT_DIR)
-
-zip_dir = get_file_list(torrent_paths,config.ZIP_DIR)
+#get .zip file
+zip_dir = get_zip_list(torrent_paths,config.ZIP_DIR)
 print(zip_dir)
-
+#get final file
 while True:
-	data_dir = unzip_file(zip_dir,config.DATA_DIR,config.PWD)
-	time.sleep(second)
+    data_dir = unzip_file(zip_dir,config.DATA_DIR,config.U_PASSWORD)
+    time.sleep(second)
 
 print("virusshare is in %s"%data_dir)
 

@@ -3,9 +3,12 @@ import requests
 import re
 import os
 
-def select(new_content,appeared_content):
+# Cheng Kai
+# 
+def select(new_content, appeared_content):
 	content = appeared_content if appeared_content else new_content 
 	return content
+
 def get_torrent_list(content,torrent_dir):
 	torrent_paths = []
 	if(torrent_dir):

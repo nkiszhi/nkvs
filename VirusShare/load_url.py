@@ -24,8 +24,6 @@ def get_html(username,password):
 	print(html)
 	return html
 
-print(88888888)
-
 def get_url_list(content,url_path):
 	print(666666)
 	f = open(url_path,'w')
@@ -33,3 +31,4 @@ def get_url_list(content,url_path):
     		f.write(match+'\n')
 	f.close()				
 	return  content
+

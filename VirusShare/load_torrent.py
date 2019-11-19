@@ -1,4 +1,3 @@
-
 #encoding: utf-8
 import requests 
 import re
@@ -22,3 +21,5 @@ def get_torrent_list(content,torrent_dir):
     else:
         exit("[!]no '%s'"% torrent_dir)
     return torrent_paths
+    
+    

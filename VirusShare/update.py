@@ -1,10 +1,7 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-
+#encoding: utf-8
 import requests
 import re
 import os
-
 def judge_update(html,url_dir):
     if(html):
         if(url_dir):
@@ -26,7 +23,7 @@ def judge_update(html,url_dir):
                 new_content = set(new_content)
                 print(new_content)
                 appeared_content = new_content - old_content
-                if(appeared_content):
+                if not appeared_content:
                      exit("[!]no update")
                 else:
                      print("something update")

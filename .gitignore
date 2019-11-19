@@ -1,3 +1,6 @@
+# Python
+*.pyc
+
 # Torrent
 torrent.list
 rss_feed.xml

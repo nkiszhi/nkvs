@@ -24,7 +24,7 @@ def get_html(username,password):
 	print(html)
 	return html
 
-def get_url_list(content):
+def get_url_list(content,url_path):
 	print(666666)
 	f = open(url_path,'w')
 	for match in content:

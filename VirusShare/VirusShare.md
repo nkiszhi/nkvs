@@ -14,6 +14,10 @@
 
 说明：读取配置文件信息，返回一个字典config
 
+**3.VirusShare/update.py**
+
+说明：判断是否更新
+
 **3.VirusShare/load_url.py**
 
 3.1 get_html()

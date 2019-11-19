@@ -8,7 +8,7 @@ from load_zip import get_zip_list
 
 from load_torrent import get_torrent_list
 
-from update import judge_upadte
+from update import judge_update
 
 from load_url import get_html
 from load_url import get_url_list
@@ -26,9 +26,9 @@ print(second)
 #get html
 html = get_html(config.V_USERNAME,config.V_PASSWORD) 
 #judge whether to update
-content = judge_update(html,config.URL_DIR)
+content,url_path = judge_update(html,config.URL_DIR)
 #get url
-content = get_url_list(content)
+content = get_url_list(content,url_path)
 #get .torrent file
 torrent_paths = get_torrent_list(content,config.TORRENT_DIR)
 #get .zip file

@@ -86,7 +86,7 @@ def multiprocess_get_label(i,split_length,length,sha256_list):
         if response.status_code == 200:
             try:
                 print(response.json())
-                positives= response.json()['positives']
+                positives= response.json()
                 ret=open('sha256-label.csv','a+')
                 ret.write(each_sha256+','+str(positives)+'\n')
                 ret.close()

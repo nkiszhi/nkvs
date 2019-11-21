@@ -51,6 +51,7 @@
 sudo apt-get install transmission-cli transmission-daemon
 
 pip install transmissionrpc
+
 ------
 
 # 运行方式

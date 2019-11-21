@@ -17,7 +17,9 @@ def get_zip_list(torrent_paths,zip_dir):
             tc.add_torrent(torrent=torrent_path,download_dir=zip_dir)    
         t = tc.get_torrents()
         torrent_process =[] 
-        while set(torrent_process)!=[1]:
+        while set(torrent_process)!=[100]:
+	    tc = transmissionrpc.Client(address='127.0.0.1',port=9091,user='transmission',password='transmission')
+	    t = tc.get_torrents()
 	    torrent_process = []
             for i in t:
                 print(i.progress)

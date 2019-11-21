@@ -13,7 +13,7 @@ def get_zip_list(torrent_paths,zip_dir):
 	print(zip_dir)
         for torrent_path in torrent_paths:
             torrent_path = os.path.abspath(torrent_path)
-            tc = transmissionrpc.Client(address='127.0.0.1',port=9091,user='jackey',password='jackey')
+            tc = transmissionrpc.Client(address='127.0.0.1',port=9091,user='transmission',password='transmission')
             tc.add_torrent(torrent=torrent_path,download_dir=zip_dir)    
         t = tc.get_torrents()
         torrent_process =[] 

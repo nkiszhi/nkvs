@@ -5,14 +5,10 @@ import time
 from unzip import unzip_file
 
 from load_zip import get_zip_list
-
 from load_torrent import get_torrent_list
-
 from update import judge_update
-
 from load_url import get_html
 from load_url import get_url_list
-
 from core.setting import config
 from core.setting import CONFIG_FILE
 from core.setting import read_config

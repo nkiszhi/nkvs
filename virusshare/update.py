@@ -1,14 +1,17 @@
-#encoding: utf-8
+#!/usr/bin/env python
+#-*- coding: utf-8 -*-
+
 import requests
 import re
 import os
+
 def judge_update(html,url_dir):
     if(html):
         if(url_dir):
             if not os.path.exists(url_dir):
                 os.mkdir(url_dir)
             url_path = os.path.join(url_dir,"url_list.txt")
-            new_content = re.findall(r"<a.*?href=\"(.*VirusShare_\d{5}.*)\">.*<\/a>",html,re.I)
+            new_content = re.findall(r"<a.*?href=\"(.*VirusShare_.*)\">.*<\/a>",html,re.I)
             if not os.path.exists(url_path):
                 print("this is first come")
                 return new_content,url_path

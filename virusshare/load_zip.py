@@ -1,7 +1,10 @@
-#encoding: utf-8
+#!/usr/bin/env python
+#-*- coding: utf-8 -*-
+
 import os
 import time
 import transmissionrpc
+
 path = './torrent'
 def get_zip_list(torrent_paths,zip_dir):
     print(565656)
@@ -11,15 +14,13 @@ def get_zip_list(torrent_paths,zip_dir):
             os.mkdir(zip_dir)
         zip_dir = os.path.abspath(zip_dir)
 	print(zip_dir)
+        tc = transmissionrpc.Client(address='127.0.0.1',port=9091,user='jackey',password='jackey')
         for torrent_path in torrent_paths:
-            torrent_path = os.path.abspath(torrent_path)
-            tc = transmissionrpc.Client(address='127.0.0.1',port=9091,user='transmission',password='transmission')
+            torrent_path = os.path.abspath(torrent_path)          
             tc.add_torrent(torrent=torrent_path,download_dir=zip_dir)    
         t = tc.get_torrents()
         torrent_process =[] 
-        while set(torrent_process)!=[100]:
-	    tc = transmissionrpc.Client(address='127.0.0.1',port=9091,user='transmission',password='transmission')
-	    t = tc.get_torrents()
+        while set(torrent_process)!=[1]:
 	    torrent_process = []
             for i in t:
                 print(i.progress)

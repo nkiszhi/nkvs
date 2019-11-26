@@ -3,6 +3,7 @@
 我们的项目是爬取*[https://virusshare.com/]()*网页种子的链接，并利用transmission种子下载器下载种子。
 
 ------
+![Image](https://github.com/nkiszhi/nkvs/blob/master/virusshare/img/flow-process.png)
 
 # 文件函数说明
 

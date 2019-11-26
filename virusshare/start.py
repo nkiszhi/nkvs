@@ -3,6 +3,7 @@
 
 import os
 import time
+import argparse
 from core.setting import read_config
 from core.setting import CONFIG_FILE
 from core.setting import config
@@ -15,11 +16,17 @@ from unzip import unzip_file
 from get_sha256 import get_sha256
 from move_file import move_file
 
+parser = argparse.ArgumentParser(usage="python start.py -u <username> -p <password> ",description="help info")
+parser.add_argument("-u","--username",type = str,required = True,help = "the username for login",dest="usr")
+parser.add_argument("-p","--password",type = str,required = True,help = "the password for login",dest="pwd")
+args = parser.parse_args()
+
+    
 read_config(CONFIG_FILE)
 #print(555555555)
 print(config) 
 #get html
-html = get_html(config.V_USERNAME,config.V_PASSWORD) 
+html = get_html(args.usr,args.pwd) 
 #judge whether to update
 content,url_path = judge_update(html,config.URL_DIR)
 #get url

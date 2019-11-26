@@ -6,7 +6,8 @@ import re
 import os
 
 def judge_update(html,url_dir):
-    if(html):
+    if(html.find('logout') > 0):
+        print("log successed")
         if(url_dir):
             if not os.path.exists(url_dir):
                 os.mkdir(url_dir)
@@ -21,10 +22,10 @@ def judge_update(html,url_dir):
                 for i in range(len(old_content)):
                     old_content[i]=old_content[i].strip('\n')
                 old_content = set(old_content)
-                print(old_content)
+                #print(old_content)
                 print(2333333)
                 new_content = set(new_content)
-                print(new_content)
+                #print(new_content)
                 appeared_content = new_content - old_content
                 if not appeared_content:
                      exit("[!]no update")
@@ -34,4 +35,4 @@ def judge_update(html,url_dir):
         else:           
             exit("[!]no '%s'"% url_dir)
     else:
-        exit("[!]missing website")
+        exit("[!]login failed")

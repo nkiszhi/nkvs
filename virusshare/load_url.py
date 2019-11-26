@@ -22,6 +22,7 @@ def get_html(username,password):
     resp = session.post(url=url,headers=headers)
     print(resp.status_code)
     html = resp.text
+    print(666666666)
     print(html)
     return html
 

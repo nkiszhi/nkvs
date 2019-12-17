@@ -13,6 +13,7 @@
 
 ### Transmission-Daemon control
 
+
 - Kill all transmission daemons
 `pkill -f transmission`
 
@@ -20,7 +21,10 @@ List all torrents
 `transmission-remote -l`
 
 Start all torrents
+`transmission-daemon --paused -w ./DATA  -c ./DATA -e transmission.log -g ./config/transmission-daemon`
 `transmission-remote --torrent all --start`
+-w --download-dir: directory to store downloaded data 
+-c: directory to watch for new .torrent files to be added. 
 
 Stop all torrents
 `transmission-remote --torrent all --stop`

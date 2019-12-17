@@ -34,4 +34,3 @@ Start a specific torrent
 ## Dependencies
 
 `sudo apt-get install transmission-cli transmission-daemon`
-

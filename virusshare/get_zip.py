@@ -6,6 +6,7 @@ import time
 import transmissionrpc
 
 path = './torrent'
+
 def get_zip_list(torrent_paths,zip_dir):
     print(565656)
     print(torrent_paths)
@@ -19,7 +20,7 @@ def get_zip_list(torrent_paths,zip_dir):
             torrent_path = os.path.abspath(torrent_path)          
             tc.add_torrent(torrent=torrent_path,download_dir=zip_dir)    
         t = tc.get_torrents()
-        torrent_process =[] 
+        torrent_process =[]
         while set(torrent_process)!=[1]:
 	    torrent_process = []
             for i in t:

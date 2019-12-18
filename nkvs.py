@@ -9,9 +9,6 @@ import requests
 import re
 import os
 
-TORRENTS = "./torrents/"
-SAMPLES = "./samples/"
-
 def get_html(usr, pwd):
     global html
     data = {    
@@ -27,7 +24,7 @@ def get_html(usr, pwd):
         print("[!]: Login failed!")
         return
     else:
-        print("[o]: Login successed!")
+        print("[o]: Login successfully!")
     #print(resp.status_code)
     #print(resp.text)
     url = 'https://virusshare.com/torrents.4n6'
@@ -36,7 +33,7 @@ def get_html(usr, pwd):
         print("[!]: Download HTML failed!")
         return
     else:
-        print("[o]: Download HTML successed!")
+        print("[o]: Download HTML successfully!")
     html = resp.text
     #print(html)
     return html
@@ -66,50 +63,40 @@ def check_update(html):
                 f.write("%s\n" % item)
         return url_list
 
-def download_torrents(url_list, dir_torrent):
+def download_torrent_file(url_list, torrent_dir):
 
-    if not os.path.exists(dir_torrent):
-        os.makedirs(dir_torrent)
+    if not os.path.exists(torrent_dir):
+        os.makedirs(torrent_dir)
     for u in url_list:
         u = u.strip()
-        file_torrent = os.path.join(dir_torrent, u.split('?')[0].split('/')[-1])
+        torrent_file = os.path.join(torrent_dir, u.split('?')[0].split('/')[-1])
         requests.adapters.DEFAULT_RETRIES = 5
         s = requests.session()
         s.keep_alive = False
         r = requests.get(u, verify=False)
-        print(r.status_code)
+        #print(r.status_code)
         if r.status_code == 200:
-            print("[o]: Download {} successfully!".format(file_torrent))
-            with open(file_torrent,'wb') as f:
+            print("[o]: Download {} successfully!".format(torrent_file))
+            with open(torrent_file,'wb') as f:
                 f.write(r.content)
         else:
-            print("[!]: Download {} failed!".format(file_torrent))
+            print("[!]: Download {} failed!".format(torrent_file))
 
 def main():
     parser = argparse.ArgumentParser(prog="nkvs", description='Download shared malware samples from VirusShare.com.')
     parser.add_argument("-u", "--username", help="The username to login VirusShare.com")
     parser.add_argument("-p", "--password", help="The password to login VirusShare.com")
-    parser.add_argument("-t", "--torrents", default="./torrents", help="a folder containing torrent files of VirusShare.com (default: ./torrents)")
-    parser.add_argument("-s", "--samples", default="./samples", help="a folder containing extracted malware samples of VirusShare.com (default: ./samples)")
+    parser.add_argument("-t", "--torrents", default="./DATA", help="The folder to store torrent files of VirusShare.com (default: ./DATA)")
     args = parser.parse_args()
     usr =  args.username
     pwd = args.password
-    dir_torrent = args.torrents
-    print(usr)
-    print(pwd)
-    print(TORRENTS)
-    print(SAMPLES)
+    torrent_dir = args.torrents
+    print("[o]: VirusTotal.com user {}.".format(usr))
+    #print(pwd)
 
     html = get_html(usr, pwd)
     url_list = check_update(html)
-    #print(url_list)
-    download_torrents(url_list, dir_torrent)
-    #zip_dir = get_zip_list(TORRENTS, SAMPLES)
-    #data_dir = unzip_file(zip_dir, )
-    #get_sha256()
-    #move_file()
-
-    #print(html)
+    download_torrent_file(url_list, torrent_dir)
     return
 
 if __name__ == "__main__":

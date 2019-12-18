@@ -8,3 +8,12 @@ url_list.txt
 nkvs.conf
 DATA
 samples
+blocklists
+resume
+torrents
+cookiefile
+stats.json
+transmission.log
+
+# Vim
+*.swp

@@ -1,39 +1,41 @@
 # Synopsis
- Download malware samples from virusshare.com
+ Download malware samples from VirusShare.com
 
 ## Technical Freatures
 - Download a VirusShare full torrent list
 - Check for VirusShare updates
 - Download torrent files
 - Download zip files containing malware samples via transmission-daemon
-- Unzip malware samples
-- Move malware samples based on SHA256 
 
 ## Usage
 
-### Transmission-Daemon control
+### Download torrent files from VirusShare.com
 
+`python nkvs.py -u username -p password -t torrent_folder`
+-u USERNAME, --username the username to login VirusShare.com
+-p PASSWORD, the password to login VirusShare.com
+-t TORRENTS_FOLDER, the folder to store torrent files
 
-- Kill all transmission daemons
-`pkill -f transmission`
+### Transmission-Daemon
 
-List all torrents
-`transmission-remote -l`
+Add aliases into .bashrc to create commands for torrent downloading.
 
-Start all torrents
-`transmission-daemon --paused -w ./DATA  -c ./DATA -e transmission.log -g ./config/transmission-daemon`
-`transmission-remote --torrent all --start`
+1. Use command vsls to list all torrents
+`alias vsls='transmission-remote -l'`
+
+2. Use command vsinit to init transmission-daemon for downloading
+`alias vsinit='transmission-daemon --paused -w ./DATA -c ./DATA -e transmission.log -g ./config/transmission-daemon'`
 -w --download-dir: directory to store downloaded data 
 -c: directory to watch for new .torrent files to be added. 
 
-Stop all torrents
-`transmission-remote --torrent all --stop`
+3. Use command vsstop to start torrent downloading
+`alias vsstop='transmission-remote --torrent all --stop'`
 
-Stop a specific torrent
-`transmission-remote -t [ID] -S`
+4. Use command vsstop to stop torrent downloading
+`alias vsstart='transmission-remote --torrent all --start'`
 
-Start a specific torrent
-`transmission-remote -t [ID] -s`
+5. Use command vskill to kill all transmission daemons
+`alias vskill='pkill -f transmission'`
 
 ## Dependencies
 

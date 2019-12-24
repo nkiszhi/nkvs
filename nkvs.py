@@ -43,7 +43,7 @@ def check_update(html):
 
     URL_LIST_FILE = "url_list.txt"
     url_list = re.findall(r"<a.*?href=\"(.*VirusShare_.*)\">.*<\/a>",html,re.I)
-
+    print("[o]: Found {} torrent files on VirusShare.com.".format(len(url_list)))
     if not os.path.exists(URL_LIST_FILE):
         print("[o]: {} new torrents.".format(len(url_list)))
         with open(URL_LIST_FILE, 'w+') as f:
@@ -91,7 +91,7 @@ def main():
     usr =  args.username
     pwd = args.password
     torrent_dir = args.torrents
-    print("[o]: VirusTotal.com user {}.".format(usr))
+    print("[o]: VirusShare.com user {}.".format(usr))
     #print(pwd)
 
     html = get_html(usr, pwd)

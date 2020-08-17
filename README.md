@@ -29,7 +29,11 @@ Add aliases into .bashrc to create commands for torrent downloading.
 
 2. Use command vsinit to init transmission-daemon for downloading
 
+`rm -fr ./config/transmission-daemon/torrents/*`
+
 `alias vsinit='transmission-daemon --paused -w ./DATA -c ./DATA -e transmission.log -g ./config/transmission-daemon'`
+
+First, clean all torrent files at transmision configration before init transmission for download.
 
 -w --download-dir: directory to store downloaded data 
 

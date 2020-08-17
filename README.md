@@ -35,9 +35,9 @@ Add aliases into .bashrc to create commands for torrent downloading.
 
 -c: directory to watch for new .torrent files to be added. 
 
-3. Use command vsstop to start torrent downloading
+3. Use command vsstart to start torrent downloading
 
-`alias vsstop='transmission-remote --torrent all --stop'`
+`alias vsstart='transmission-remote --torrent all --stop'`
 
 4. Use command vsstop to stop torrent downloading
 

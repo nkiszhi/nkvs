@@ -17,11 +17,16 @@ def get_html(usr, pwd):
         }
     headers = {
     'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/73.0.3683.75 Chrome/73.0.3683.75 Safari/537.36',}
-    login_url = 'https://virusshare.com/processlogin.4n6'
+    login_url = 'https://virusshare.com/processlogin'
     session = requests.Session()
     resp = session.post(url=login_url,data=data,headers=headers)
+    html_= resp.text
+    with open("html_.txt","w") as f:
+        f.write(html_)
     if resp.status_code != 200:
+	#print(resp.status_code)
         print("[!]: Login failed!")
+        print(resp.status_code)
         return
     else:
         print("[o]: Login successfully!")
@@ -36,6 +41,8 @@ def get_html(usr, pwd):
         print("[o]: Download HTML successfully!")
     html = resp.text
     #print(html)
+    with open("html.txt","w") as f:
+        f.write(html)
     return html
 
 def check_update(html):

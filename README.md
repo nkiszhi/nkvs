@@ -54,3 +54,24 @@ First, clean all torrent files at transmision configration before init transmiss
 ## Dependencies
 
 `sudo apt-get install transmission-cli transmission-daemon`
+
+nkvs更新流程
+一．运行nkvs.py下载virusshare网站更新的种子文件
+（nkvs.py的使用python nkvs.py -u username -p password）
+nkvs.py中有三个函数，功能如下：
+get_html(usr, pwd)登录virusshare网站，得到网页源码存于html中
+check_update(html)解析html信息得到网站目前所有的种子文件存于url_list中，旧的已下载文件在url_list.txt中，将url_list所有种子文件减去list.txt中之前已下载的种子文件，得到更新未下载过的的种子文件存于url_list
+download_torrent_file(url_list, torrent_dir)下载网站更新的种子文件到./DATA中
+（注：不同时候的网站爬虫网页URL可能会不同，在运行nkvs.py出错时可以先核对网页URL是否正确）
+
+二．将下载的种子文件使用命令下载对应的zip文件
+1. 运行kill命令把所有的transmission进程关掉（ps aux |grep transmission列出所有的transmission进程信息）（kill -9 进程号关闭对应进程）
+2. 进入/home/RaidDisk/nkvs路径（必须在该路径下运行vsinit命令）
+3. 运行vsinit，启动transmission进程
+4. 运行vsstart，启动zip文件下载
+5. 运行vsls，查看zip文件的下载进度
+
+三．所有zip文件下载好后，运行vs_unzip.py
+vs_unzip.py：解压缩从virusshare下载下来的zip文件，并移动到nkrepo对应文件夹下
+
+
